@@ -1,0 +1,3303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rhetorical Appeals — Ethos, Logos, Pathos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== Design Tokens ===== */
+    :root {
+      /* Type Scale */
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3rem);
+
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+
+      /* Font families */
+      --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      --font-body: 'Nunito', 'Helvetica Neue', sans-serif;
+
+      /* Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
+
+      /* Transitions */
+      --transition: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    /* ===== Light Mode ===== */
+    :root,
+    [data-theme="light"] {
+      --color-bg: #f4f6fb;
+      --color-surface: #ffffff;
+      --color-surface-2: #f8f9fc;
+      --color-surface-offset: #eef1f8;
+      --color-border: #d8dcec;
+      --color-divider: #e2e6f0;
+
+      --color-text: #1e2133;
+      --color-text-muted: #5c6070;
+      --color-text-faint: #9398ab;
+      --color-text-inverse: #ffffff;
+
+      /* Ethos — Blue (trust) */
+      --color-ethos: #2563eb;
+      --color-ethos-light: #dbeafe;
+      --color-ethos-dark: #1d4ed8;
+
+      /* Logos — Green (logic) */
+      --color-logos: #059669;
+      --color-logos-light: #d1fae5;
+      --color-logos-dark: #047857;
+
+      /* Pathos — Orange (emotion) */
+      --color-pathos: #ea580c;
+      --color-pathos-light: #ffedd5;
+      --color-pathos-dark: #c2410c;
+
+      /* Semantic */
+      --color-correct: #16a34a;
+      --color-correct-light: #dcfce7;
+      --color-incorrect: #dc2626;
+      --color-incorrect-light: #fee2e2;
+      --color-hint: #7c3aed;
+      --color-hint-light: #ede9fe;
+
+      --color-primary: #4f46e5;
+      --color-primary-hover: #4338ca;
+    }
+
+    /* ===== Dark Mode ===== */
+    [data-theme="dark"] {
+      --color-bg: #131421;
+      --color-surface: #1a1c2e;
+      --color-surface-2: #1e2035;
+      --color-surface-offset: #232645;
+      --color-border: #353851;
+      --color-divider: #2a2d42;
+
+      --color-text: #e2e4f0;
+      --color-text-muted: #9295b0;
+      --color-text-faint: #6b6e8a;
+      --color-text-inverse: #1e2133;
+
+      --color-ethos: #60a5fa;
+      --color-ethos-light: #1e3a5f;
+      --color-ethos-dark: #93c5fd;
+
+      --color-logos: #34d399;
+      --color-logos-light: #134e3a;
+      --color-logos-dark: #6ee7b7;
+
+      --color-pathos: #fb923c;
+      --color-pathos-light: #5c2d0f;
+      --color-pathos-dark: #fdba74;
+
+      --color-correct: #4ade80;
+      --color-correct-light: #1a3e2a;
+      --color-incorrect: #f87171;
+      --color-incorrect-light: #3e1a1a;
+      --color-hint: #a78bfa;
+      --color-hint-light: #2d1b5c;
+
+      --color-primary: #818cf8;
+      --color-primary-hover: #6366f1;
+
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    /* ===== Base Reset ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      min-height: 100dvh;
+      line-height: 1.6;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+
+    p, li {
+      text-wrap: pretty;
+      max-width: 72ch;
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit;
+      border: none;
+      background: none;
+    }
+
+    a, button, [role="button"] {
+      transition: color var(--transition), background var(--transition),
+                  border-color var(--transition), box-shadow var(--transition),
+                  transform var(--transition);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--color-primary);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 var(--space-4);
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-3) var(--space-4);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-base);
+      color: var(--color-text);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: var(--space-1);
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover {
+      color: var(--color-text);
+      background: var(--color-surface-offset);
+    }
+
+    .nav-tab.active {
+      color: var(--color-text-inverse);
+      background: var(--color-primary);
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      color: var(--color-text);
+      background: var(--color-surface-offset);
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: var(--space-16) var(--space-4) var(--space-12);
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      background: var(--color-surface-offset);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      margin-bottom: var(--space-4);
+    }
+
+    .hero h1 .ethos-text { color: var(--color-ethos); }
+    .hero h1 .logos-text { color: var(--color-logos); }
+    .hero h1 .pathos-text { color: var(--color-pathos); }
+
+    .hero p {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    .hero-nav {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+
+    .hero-nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-5) var(--space-6);
+      border-radius: var(--radius-xl);
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      min-width: 140px;
+    }
+
+    .hero-nav-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-nav-btn .nav-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .hero-nav-btn .nav-label {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    .hero-nav-btn .nav-desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      display: none;
+      padding: var(--space-8) var(--space-4) var(--space-20);
+      animation: fadeIn 300ms ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-10);
+    }
+
+    .section-header h2 {
+      font-size: var(--text-xl);
+      font-weight: 800;
+      margin-bottom: var(--space-2);
+    }
+
+    .section-header p {
+      color: var(--color-text-muted);
+      font-size: var(--text-base);
+      max-width: 55ch;
+      margin: 0 auto;
+    }
+
+    /* ===== Teach Section ===== */
+    .appeal-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-6);
+      margin-bottom: var(--space-10);
+    }
+
+    .appeal-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      border: 2px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .appeal-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .appeal-card[data-appeal="ethos"] { --accent: var(--color-ethos); --accent-light: var(--color-ethos-light); }
+    .appeal-card[data-appeal="logos"] { --accent: var(--color-logos); --accent-light: var(--color-logos-light); }
+    .appeal-card[data-appeal="pathos"] { --accent: var(--color-pathos); --accent-light: var(--color-pathos-light); }
+
+    .card-header {
+      background: var(--accent-light);
+      padding: var(--space-6) var(--space-6) var(--space-5);
+      text-align: center;
+    }
+
+    .card-emoji {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: var(--space-1);
+    }
+
+    .card-subtitle {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    .card-body {
+      padding: var(--space-6);
+    }
+
+    .card-body p {
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+    }
+
+    .analogy-box {
+      background: var(--accent-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      border-left: 4px solid var(--accent);
+    }
+
+    .analogy-box .label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: var(--space-2);
+    }
+
+    .analogy-box p {
+      margin: 0;
+      font-size: var(--text-sm);
+    }
+
+    .clue-words {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .clue-chip {
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: var(--text-xs);
+      font-weight: 700;
+    }
+
+    .example-toggle {
+      display: block;
+      width: 100%;
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      background: var(--color-surface-offset);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--accent);
+      text-align: center;
+      margin-top: var(--space-2);
+    }
+
+    .example-toggle:hover {
+      background: var(--accent-light);
+    }
+
+    .example-content {
+      display: none;
+      margin-top: var(--space-3);
+      padding: var(--space-4);
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    .example-content.show {
+      display: block;
+      animation: fadeIn 200ms ease;
+    }
+
+    .example-content .example-text {
+      font-style: italic;
+      margin-bottom: var(--space-2);
+      color: var(--color-text);
+    }
+
+    .example-content .example-explanation {
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    /* Quick reference table */
+    .quick-ref {
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--color-border);
+      padding: var(--space-6);
+      margin-top: var(--space-8);
+    }
+
+    .quick-ref h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-4);
+      text-align: center;
+    }
+
+    .quick-ref-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .quick-ref-table th,
+    .quick-ref-table td {
+      padding: var(--space-3);
+      text-align: left;
+      border-bottom: 1px solid var(--color-divider);
+      font-size: var(--text-sm);
+    }
+
+    .quick-ref-table th {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+    }
+
+    .quick-ref-table td:first-child {
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .quick-ref-table .ethos-row td:first-child { color: var(--color-ethos); }
+    .quick-ref-table .logos-row td:first-child { color: var(--color-logos); }
+    .quick-ref-table .pathos-row td:first-child { color: var(--color-pathos); }
+
+    /* ===== Guide Section ===== */
+    .guide-progress {
+      display: flex;
+      gap: var(--space-2);
+      justify-content: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .progress-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      background: var(--color-surface-offset);
+      color: var(--color-text-faint);
+      border: 2px solid transparent;
+      transition: all var(--transition);
+    }
+
+    .progress-dot.current {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+    }
+
+    .progress-dot.completed {
+      background: var(--color-correct-light);
+      color: var(--color-correct);
+      border-color: var(--color-correct);
+    }
+
+    .guide-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      border: 2px solid var(--color-border);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .guide-passage {
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      margin-bottom: var(--space-6);
+      border-left: 4px solid var(--color-primary);
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--color-text);
+    }
+
+    .guide-passage .source {
+      display: block;
+      margin-top: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+
+    .guide-step {
+      margin-bottom: var(--space-6);
+    }
+
+    .guide-step-label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .guide-question {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-3);
+      color: var(--color-text);
+    }
+
+    .guide-choices {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .choice-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      text-align: left;
+      color: var(--color-text);
+    }
+
+    .choice-btn:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .choice-btn:disabled {
+      cursor: default;
+    }
+
+    .choice-btn.correct {
+      border-color: var(--color-correct);
+      background: var(--color-correct-light);
+      color: var(--color-correct);
+    }
+
+    .choice-btn.incorrect {
+      border-color: var(--color-incorrect);
+      background: var(--color-incorrect-light);
+      color: var(--color-incorrect);
+    }
+
+    .choice-letter {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-xs);
+      background: var(--color-surface-offset);
+      color: var(--color-text-muted);
+      flex-shrink: 0;
+    }
+
+    .choice-btn.correct .choice-letter {
+      background: var(--color-correct);
+      color: #fff;
+    }
+
+    .choice-btn.incorrect .choice-letter {
+      background: var(--color-incorrect);
+      color: #fff;
+    }
+
+    .hint-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      background: var(--color-hint-light);
+      color: var(--color-hint);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      margin-top: var(--space-3);
+    }
+
+    .hint-btn:hover {
+      background: var(--color-hint);
+      color: #fff;
+    }
+
+    .hint-text {
+      display: none;
+      margin-top: var(--space-3);
+      padding: var(--space-3) var(--space-4);
+      background: var(--color-hint-light);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      color: var(--color-hint);
+      border-left: 3px solid var(--color-hint);
+    }
+
+    .hint-text.show {
+      display: block;
+      animation: fadeIn 200ms ease;
+    }
+
+    .step-feedback {
+      display: none;
+      margin-top: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-md);
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    .step-feedback.show {
+      display: block;
+      animation: fadeIn 200ms ease;
+    }
+
+    .step-feedback.correct {
+      background: var(--color-correct-light);
+      color: var(--color-correct);
+      border-left: 4px solid var(--color-correct);
+    }
+
+    .step-feedback.incorrect {
+      background: var(--color-incorrect-light);
+      color: var(--color-incorrect);
+      border-left: 4px solid var(--color-incorrect);
+    }
+
+    .guide-nav {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      margin-top: var(--space-8);
+    }
+
+    .guide-nav-btn {
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-text-muted);
+    }
+
+    .guide-nav-btn:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    .guide-nav-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+    .guide-nav-btn.primary {
+      background: var(--color-primary);
+      color: #fff;
+      border-color: var(--color-primary);
+    }
+
+    .guide-nav-btn.primary:hover:not(:disabled) {
+      background: var(--color-primary-hover);
+      color: #fff;
+    }
+
+    .guide-complete {
+      text-align: center;
+      padding: var(--space-8);
+    }
+
+    .guide-complete-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-3);
+    }
+
+    .guide-complete h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-2);
+    }
+
+    .guide-complete p {
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      margin-bottom: var(--space-5);
+    }
+
+    /* ===== Practice Section ===== */
+    .practice-scorebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-6);
+      background: var(--color-surface);
+      border-radius: var(--radius-xl);
+      border: 2px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--space-6);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .score-item {
+      text-align: center;
+    }
+
+    .score-label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-1);
+    }
+
+    .score-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-xl);
+      color: var(--color-text);
+    }
+
+    .score-value.correct { color: var(--color-correct); }
+    .score-value.streak { color: var(--color-pathos); }
+
+    .progress-bar-container {
+      flex: 1;
+      height: 8px;
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin: 0 var(--space-4);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-ethos));
+      border-radius: var(--radius-full);
+      transition: width 400ms ease;
+      width: 0%;
+    }
+
+    .quiz-card {
+      background: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      border: 2px solid var(--color-border);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .quiz-number {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+    }
+
+    .quiz-passage {
+      background: var(--color-surface-offset);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      margin-bottom: var(--space-5);
+      font-size: var(--text-base);
+      line-height: 1.8;
+      color: var(--color-text);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .quiz-question {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+    }
+
+    .quiz-choices {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .quiz-choice {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface-2);
+      font-size: var(--text-base);
+      font-weight: 600;
+      text-align: left;
+      color: var(--color-text);
+    }
+
+    .quiz-choice:hover:not(:disabled) {
+      border-color: var(--color-primary);
+      background: var(--color-surface-offset);
+      transform: translateX(3px);
+    }
+
+    .quiz-choice:disabled {
+      cursor: default;
+    }
+
+    .quiz-choice.correct {
+      border-color: var(--color-correct);
+      background: var(--color-correct-light);
+      color: var(--color-correct);
+    }
+
+    .quiz-choice.incorrect {
+      border-color: var(--color-incorrect);
+      background: var(--color-incorrect-light);
+      color: var(--color-incorrect);
+    }
+
+    .quiz-choice .choice-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      background: var(--color-surface-offset);
+    }
+
+    .quiz-choice.correct .choice-icon {
+      background: var(--color-correct);
+    }
+
+    .quiz-choice.incorrect .choice-icon {
+      background: var(--color-incorrect);
+    }
+
+    .quiz-explanation {
+      display: none;
+      margin-top: var(--space-5);
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-offset);
+      border-left: 4px solid var(--color-primary);
+    }
+
+    .quiz-explanation.show {
+      display: block;
+      animation: fadeIn 300ms ease;
+    }
+
+    .quiz-explanation .explanation-label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .quiz-explanation p {
+      font-size: var(--text-sm);
+      line-height: 1.7;
+      color: var(--color-text);
+    }
+
+    .quiz-explanation .appeal-tag {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: var(--space-2);
+    }
+
+    .quiz-explanation .appeal-tag.ethos { background: var(--color-ethos-light); color: var(--color-ethos); }
+    .quiz-explanation .appeal-tag.logos { background: var(--color-logos-light); color: var(--color-logos); }
+    .quiz-explanation .appeal-tag.pathos { background: var(--color-pathos-light); color: var(--color-pathos); }
+    .quiz-explanation .appeal-tag.mixed { background: var(--color-hint-light); color: var(--color-hint); }
+
+    .breakdown-item.mixed { background: var(--color-hint-light); }
+    .breakdown-item.mixed .bd-label { color: var(--color-hint); }
+
+    .quiz-next {
+      display: block;
+      margin: var(--space-5) auto 0;
+      padding: var(--space-3) var(--space-8);
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .quiz-next:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Quiz results */
+    .quiz-results {
+      display: none;
+      text-align: center;
+      padding: var(--space-10) var(--space-6);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .quiz-results.show {
+      display: block;
+      animation: fadeIn 400ms ease;
+    }
+
+    .results-emoji {
+      font-size: 4rem;
+      margin-bottom: var(--space-4);
+    }
+
+    .results-score {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .results-score .num { color: var(--color-primary); }
+
+    .results-message {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-6);
+      line-height: 1.7;
+    }
+
+    .results-breakdown {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .breakdown-item {
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-lg);
+      text-align: center;
+    }
+
+    .breakdown-item.ethos { background: var(--color-ethos-light); }
+    .breakdown-item.logos { background: var(--color-logos-light); }
+    .breakdown-item.pathos { background: var(--color-pathos-light); }
+
+    .breakdown-item .bd-label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+
+    .breakdown-item.ethos .bd-label { color: var(--color-ethos); }
+    .breakdown-item.logos .bd-label { color: var(--color-logos); }
+    .breakdown-item.pathos .bd-label { color: var(--color-pathos); }
+
+    .breakdown-item .bd-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-lg);
+    }
+
+    .restart-btn {
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+    }
+
+    .restart-btn:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ===== Intro Video Section ===== */
+    .video-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #000;
+      margin-bottom: var(--space-6);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 5px;
+      background: var(--color-primary);
+      border-radius: var(--radius-full);
+      width: 0%;
+      z-index: 10;
+      transition: width 500ms ease;
+    }
+
+    .video-status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+    }
+
+    .video-status-text {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .video-status-text.watched {
+      color: var(--color-correct);
+    }
+
+    .video-watch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      opacity: 0.4;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .video-watch-btn.ready {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .video-watch-btn.ready:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .video-watch-btn.complete {
+      background: var(--color-correct);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    .video-manual-confirm {
+      display: block;
+      margin: var(--space-3) auto 0;
+      padding: var(--space-2) var(--space-4);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-decoration: underline;
+    }
+
+    .video-manual-confirm:hover {
+      color: var(--color-primary);
+    }
+
+    /* ===== Reflection Question ===== */
+    .reflection-card {
+      display: none;
+      max-width: 700px;
+      margin: var(--space-8) auto 0;
+      background: var(--color-surface);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .reflection-card.show {
+      display: block;
+      animation: fadeIn 400ms ease;
+    }
+
+    .reflection-label {
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .reflection-question {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    .reflection-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface-2);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-text);
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .reflection-textarea:focus {
+      border-color: var(--color-primary);
+      outline: none;
+    }
+
+    .reflection-textarea::placeholder {
+      color: var(--color-text-faint);
+    }
+
+    .reflection-hint {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      font-weight: 600;
+    }
+
+    .reflection-submit {
+      display: block;
+      margin-top: var(--space-4);
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .reflection-submit:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .reflection-confirmation {
+      display: none;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      background: var(--color-correct-light);
+      color: var(--color-correct);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      margin-top: var(--space-3);
+    }
+
+    .reflection-confirmation.show {
+      display: flex;
+      animation: fadeIn 300ms ease;
+    }
+
+    .video-locked-notice {
+      display: none;
+      text-align: center;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
+      background: var(--color-hint-light);
+      color: var(--color-hint);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      margin-top: var(--space-4);
+    }
+
+    .video-locked-notice.show {
+      display: block;
+      animation: fadeIn 300ms ease;
+    }
+
+    /* ===== Progress Tracker ===== */
+    .progress-tracker {
+      position: sticky;
+      top: 57px;
+      z-index: 90;
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      padding: var(--space-2) var(--space-4);
+    }
+
+    .progress-tracker-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tracker-steps {
+      display: flex;
+      gap: var(--space-3);
+      flex: 1;
+      flex-wrap: wrap;
+    }
+
+    .tracker-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-xs);
+      color: var(--color-text-faint);
+      transition: all var(--transition);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tracker-step:hover {
+      color: var(--color-text-muted);
+    }
+
+    .tracker-step.active {
+      color: var(--color-primary);
+      background: var(--color-surface-offset);
+    }
+
+    .tracker-step.completed {
+      color: var(--color-correct);
+      background: var(--color-correct-light);
+    }
+
+    .tracker-check {
+      width: 18px;
+      height: 18px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      border: 2px solid currentColor;
+    }
+
+    .tracker-step.completed .tracker-check {
+      background: var(--color-correct);
+      border-color: var(--color-correct);
+      color: #fff;
+    }
+
+    .tracker-percent {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* ===== Student Name Input ===== */
+    .name-input-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-6);
+    }
+
+    .name-input-section label {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--color-text-muted);
+    }
+
+    .name-input-row {
+      display: flex;
+      gap: var(--space-2);
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .name-input {
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--color-border);
+      background: var(--color-surface);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--color-text);
+      min-width: 240px;
+      text-align: center;
+    }
+
+    .name-input:focus {
+      border-color: var(--color-primary);
+      outline: none;
+    }
+
+    .name-input::placeholder {
+      color: var(--color-text-faint);
+      font-weight: 400;
+    }
+
+    .name-save-btn {
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-lg);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .name-save-btn:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .name-display {
+      display: none;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      background: var(--color-surface-offset);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text);
+    }
+
+    .name-display.show {
+      display: flex;
+    }
+
+    .name-display .edit-name {
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* ===== Section Complete Badge ===== */
+    .section-complete-banner {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      margin: var(--space-6) auto 0;
+      padding: var(--space-4) var(--space-6);
+      border-radius: var(--radius-xl);
+      background: var(--color-correct-light);
+      border: 2px solid var(--color-correct);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .section-complete-banner.show {
+      display: flex;
+      animation: fadeIn 400ms ease;
+    }
+
+    .section-complete-banner .check-icon {
+      font-size: 1.5rem;
+    }
+
+    .section-complete-banner .banner-text {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-correct);
+    }
+
+    .teach-complete-btn {
+      display: block;
+      margin: var(--space-8) auto 0;
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-base);
+      opacity: 0.4;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .teach-complete-btn.ready {
+      opacity: 1;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+
+    .teach-complete-btn.ready:hover {
+      background: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .teach-complete-hint {
+      text-align: center;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      margin-top: var(--space-2);
+      font-weight: 600;
+    }
+
+    /* ===== Certificate Modal ===== */
+    .certificate-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      overflow-y: auto;
+    }
+
+    .certificate-overlay.show {
+      display: flex;
+      animation: fadeIn 300ms ease;
+    }
+
+    .certificate {
+      background: #fff;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      max-width: 700px;
+      width: 100%;
+      padding: var(--space-10) var(--space-8);
+      text-align: center;
+      position: relative;
+      color: #1e2133;
+      border: 8px solid #4f46e5;
+    }
+
+    .certificate-inner-border {
+      border: 2px solid #c7d2fe;
+      border-radius: var(--radius-xl);
+      padding: var(--space-8) var(--space-6);
+    }
+
+    .certificate-seal {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(79,70,229,0.3);
+    }
+
+    .certificate-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-xl);
+      color: #4f46e5;
+      margin-bottom: var(--space-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .certificate-subtitle {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: #5c6070;
+      margin-bottom: var(--space-6);
+      font-weight: 600;
+    }
+
+    .certificate-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-2xl);
+      color: #1e2133;
+      margin-bottom: var(--space-2);
+      border-bottom: 3px solid #c7d2fe;
+      padding-bottom: var(--space-2);
+      display: inline-block;
+    }
+
+    .certificate-body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: #5c6070;
+      line-height: 1.8;
+      margin-bottom: var(--space-6);
+    }
+
+    .certificate-body strong {
+      color: #1e2133;
+    }
+
+    .certificate-stats {
+      display: flex;
+      gap: var(--space-6);
+      justify-content: center;
+      margin-bottom: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .cert-stat {
+      text-align: center;
+    }
+
+    .cert-stat .cert-stat-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: var(--text-lg);
+      color: #4f46e5;
+    }
+
+    .cert-stat .cert-stat-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #9398ab;
+    }
+
+    .certificate-date {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: #5c6070;
+      font-weight: 600;
+      margin-bottom: var(--space-6);
+    }
+
+    .certificate-signature {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: #1e2133;
+      border-top: 2px solid #e2e6f0;
+      padding-top: var(--space-3);
+      margin-top: var(--space-4);
+    }
+
+    .certificate-actions {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      margin-top: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .cert-btn {
+      padding: var(--space-3) var(--space-6);
+      border-radius: var(--radius-full);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .cert-btn.print {
+      background: #4f46e5;
+      color: #fff;
+    }
+
+    .cert-btn.print:hover {
+      background: #4338ca;
+    }
+
+    .cert-btn.close {
+      background: #f4f6fb;
+      color: #5c6070;
+      border: 2px solid #d8dcec;
+    }
+
+    .cert-btn.close:hover {
+      background: #eef1f8;
+    }
+
+    /* ===== Print Styles ===== */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      .certificate-overlay,
+      .certificate-overlay * {
+        visibility: visible;
+      }
+
+      .certificate-overlay {
+        display: flex !important;
+        position: absolute;
+        inset: 0;
+        background: #fff;
+        padding: 0;
+        overflow: visible;
+      }
+
+      .certificate {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+        page-break-inside: avoid;
+      }
+
+      .certificate-actions {
+        display: none !important;
+      }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+      .progress-tracker {
+        top: 53px;
+        padding: var(--space-1) var(--space-2);
+      }
+
+      .tracker-steps {
+        gap: var(--space-1);
+      }
+
+      .tracker-step {
+        padding: var(--space-1) var(--space-2);
+        font-size: 0.65rem;
+      }
+
+      .tracker-check {
+        width: 16px;
+        height: 16px;
+        font-size: 0.6rem;
+      }
+
+      .tracker-percent {
+        font-size: var(--text-xs);
+      }
+
+      .certificate {
+        padding: var(--space-6) var(--space-4);
+        border-width: 4px;
+      }
+
+      .certificate-inner-border {
+        padding: var(--space-4) var(--space-2);
+      }
+
+      .certificate-stats {
+        gap: var(--space-3);
+      }
+
+      .header-inner {
+        flex-wrap: wrap;
+        padding: var(--space-2) var(--space-3);
+      }
+
+      .logo {
+        order: 1;
+        font-size: var(--text-sm);
+      }
+
+      .nav-tabs {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: var(--space-1);
+      }
+
+      .nav-tab {
+        padding: var(--space-1) var(--space-3);
+        font-size: var(--text-xs);
+      }
+
+      .theme-toggle {
+        order: 2;
+      }
+
+      .hero {
+        padding: var(--space-10) var(--space-4) var(--space-8);
+      }
+
+      .hero-nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-nav-btn {
+        flex-direction: row;
+        text-align: left;
+        min-width: auto;
+      }
+
+      .hero-nav-btn .nav-icon {
+        font-size: 1.5rem;
+      }
+
+      .practice-scorebar {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        padding: var(--space-3);
+      }
+
+      .progress-bar-container {
+        order: 3;
+        flex-basis: 100%;
+        margin: 0;
+      }
+
+      .guide-card,
+      .quiz-card {
+        padding: var(--space-4);
+      }
+
+      .guide-passage,
+      .quiz-passage {
+        padding: var(--space-4);
+        font-size: var(--text-sm);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: var(--text-xl);
+      }
+
+      .hero p {
+        font-size: var(--text-base);
+      }
+
+      .section-header h2 {
+        font-size: var(--text-lg);
+      }
+
+      .results-breakdown {
+        gap: var(--space-2);
+      }
+
+      .breakdown-item {
+        padding: var(--space-2) var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="3" y="6" width="10" height="24" rx="2" fill="var(--color-ethos)" />
+          <rect x="13" y="6" width="10" height="24" rx="2" fill="var(--color-logos)" />
+          <rect x="23" y="6" width="10" height="24" rx="2" fill="var(--color-pathos)" />
+          <circle cx="8" cy="18" r="2" fill="white" opacity="0.9" />
+          <circle cx="18" cy="18" r="2" fill="white" opacity="0.9" />
+          <circle cx="28" cy="18" r="2" fill="white" opacity="0.9" />
+        </svg>
+        <span>Rhetorical Appeals</span>
+      </div>
+      <nav class="nav-tabs" role="tablist">
+        <button class="nav-tab active" data-tab="intro" role="tab">Intro</button>
+        <button class="nav-tab" data-tab="teach" role="tab">Teach</button>
+        <button class="nav-tab" data-tab="guide" role="tab">Guide</button>
+        <button class="nav-tab" data-tab="practice" role="tab">Practice</button>
+      </nav>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Progress Tracker ===== -->
+  <div class="progress-tracker" id="progress-tracker">
+    <div class="progress-tracker-inner">
+      <div class="tracker-steps">
+        <div class="tracker-step active" data-tab="intro" id="tracker-intro">
+          <span class="tracker-check">0</span>
+          <span>Intro</span>
+        </div>
+        <div class="tracker-step" data-tab="teach" id="tracker-teach">
+          <span class="tracker-check">1</span>
+          <span>Teach</span>
+        </div>
+        <div class="tracker-step" data-tab="guide" id="tracker-guide">
+          <span class="tracker-check">2</span>
+          <span>Guide</span>
+        </div>
+        <div class="tracker-step" data-tab="practice" id="tracker-practice">
+          <span class="tracker-check">3</span>
+          <span>Practice</span>
+        </div>
+      </div>
+      <div class="tracker-percent" id="tracker-percent">0% Complete</div>
+    </div>
+  </div>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="hero-badge">Florida B.E.S.T. ELA.6.R.3.4</div>
+    <h1>
+      <span class="ethos-text">Ethos</span>, <span class="logos-text">Logos</span> &amp; <span class="pathos-text">Pathos</span>
+    </h1>
+    <p>Learn how writers persuade their readers using trust, logic, and emotion. Start with Teach, move through Guide, then test your skills in Practice.</p>
+    <div class="hero-nav">
+      <button class="hero-nav-btn" data-tab="intro">
+        <span class="nav-icon">🎬</span>
+        <span class="nav-label">Intro</span>
+        <span class="nav-desc">Watch the video</span>
+      </button>
+      <button class="hero-nav-btn" data-tab="teach">
+        <span class="nav-icon">📚</span>
+        <span class="nav-label">Teach</span>
+        <span class="nav-desc">Learn the basics</span>
+      </button>
+      <button class="hero-nav-btn" data-tab="guide">
+        <span class="nav-icon">🧭</span>
+        <span class="nav-label">Guide</span>
+        <span class="nav-desc">Coached practice</span>
+      </button>
+      <button class="hero-nav-btn" data-tab="practice">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Practice</span>
+        <span class="nav-desc">Quiz game</span>
+      </button>
+    </div>
+    <div class="name-input-section" id="name-input-section">
+      <label for="student-name">Type your name to get started</label>
+      <div class="name-input-row">
+        <input type="text" class="name-input" id="student-name" placeholder="Your name here" maxlength="30" />
+        <button class="name-save-btn" onclick="saveStudentName()">Start</button>
+      </div>
+    </div>
+    <div class="name-display" id="name-display">
+      <span>👤 <span id="name-display-text"></span></span>
+      <button class="edit-name" onclick="editStudentName()">Edit</button>
+    </div>
+  </section>
+
+  <!-- ===== Intro Video Section ===== -->
+  <section class="section active" id="intro-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Introduction Video</h2>
+        <p>Watch this short video to learn about ethos, logos, and pathos before you begin. The video is about 10 minutes long.</p>
+      </div>
+
+      <div class="video-section">
+        <div class="video-wrapper">
+          <div id="video-player"></div>
+          <div class="video-progress-bar" id="video-progress-bar"></div>
+        </div>
+
+        <div class="video-status">
+          <div class="video-status-text" id="video-status-text">⏳ Watch the video to unlock the next section</div>
+          <button class="video-watch-btn" id="video-watch-btn" onclick="markIntroComplete()">
+            ✓ I've Watched the Video — Continue to Teach
+          </button>
+        </div>
+
+        <button class="video-manual-confirm" onclick="manualConfirmVideo()">
+          We watched this as a class — Mark as complete
+        </button>
+      </div>
+
+      <!-- Reflection Question -->
+      <div class="reflection-card" id="reflection-card">
+        <div class="reflection-label">✏️ Quick Reflection</div>
+        <div class="reflection-question">Which of the three appeals — ethos, logos, or pathos — do you think is the most powerful for convincing YOU? Write 2-3 sentences explaining why.</div>
+        <textarea class="reflection-textarea" id="reflection-text" placeholder="Type your reflection here..."></textarea>
+        <div class="reflection-hint" id="reflection-hint">Write at least 2 sentences (20+ characters) to continue.</div>
+        <button class="reflection-submit" onclick="submitReflection()">Submit Reflection</button>
+        <div class="reflection-confirmation" id="reflection-confirmation">✓ Great reflection! You can continue now.</div>
+      </div>
+
+      <div class="section-complete-banner" id="intro-complete-banner">
+        <span class="check-icon">✅</span>
+        <span class="banner-text">Intro video complete! Head to the Teach section next.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Teach Section ===== -->
+  <section class="section" id="teach-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Are Rhetorical Appeals?</h2>
+        <p>Rhetorical appeals are the tools writers and speakers use to persuade an audience. There are three main types — each one targets a different part of how we think and feel.</p>
+      </div>
+
+      <div class="appeal-cards">
+        <!-- Ethos -->
+        <div class="appeal-card" data-appeal="ethos">
+          <div class="card-header">
+            <div class="card-emoji">🤝</div>
+            <div class="card-title">Ethos</div>
+            <div class="card-subtitle">Credibility &amp; Trust</div>
+          </div>
+          <div class="card-body">
+            <p><strong>Ethos</strong> is about trust. When a writer uses ethos, they're saying: "You should believe me because I'm qualified, experienced, or honest." It answers the question: <em>Why should I listen to this person?</em></p>
+            <div class="analogy-box">
+              <div class="label">Kid-Friendly Analogy</div>
+              <p>Imagine your basketball coach gives you tips on shooting form. You trust the advice because the coach has played and taught the game for years. That trust? That's ethos.</p>
+            </div>
+            <p style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text-muted); margin-bottom: var(--space-1);">Clue words to look for:</p>
+            <div class="clue-words">
+              <span class="clue-chip">expert</span>
+              <span class="clue-chip">studies show</span>
+              <span class="clue-chip">according to</span>
+              <span class="clue-chip">years of experience</span>
+              <span class="clue-chip">researcher</span>
+              <span class="clue-chip">as a...</span>
+            </div>
+            <button class="example-toggle" onclick="toggleExample(this)">Show Example</button>
+            <div class="example-content">
+              <p class="example-text">"As a veterinarian with 15 years of experience, I can assure you that adopting a shelter dog is one of the most rewarding decisions a family can make."</p>
+              <p class="example-explanation">The speaker builds trust by mentioning their job (veterinarian) and experience (15 years). That credibility makes you more likely to believe them.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logos -->
+        <div class="appeal-card" data-appeal="logos">
+          <div class="card-header">
+            <div class="card-emoji">📊</div>
+            <div class="card-title">Logos</div>
+            <div class="card-subtitle">Logic &amp; Evidence</div>
+          </div>
+          <div class="card-body">
+            <p><strong>Logos</strong> is about logic. When a writer uses logos, they back up their argument with facts, statistics, data, or clear reasoning. It answers the question: <em>What evidence supports this?</em></p>
+            <div class="analogy-box">
+              <div class="label">Kid-Friendly Analogy</div>
+              <p>Your school cafeteria posts a graph showing that food waste dropped 40% after starting a "share table." The numbers prove it worked — that's logos in action.</p>
+            </div>
+            <p style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text-muted); margin-bottom: var(--space-1);">Clue words to look for:</p>
+            <div class="clue-words">
+              <span class="clue-chip">data</span>
+              <span class="clue-chip">percent</span>
+              <span class="clue-chip">statistics</span>
+              <span class="clue-chip">study found</span>
+              <span class="clue-chip">numbers</span>
+              <span class="clue-chip">evidence</span>
+              <span class="clue-chip">results</span>
+            </div>
+            <button class="example-toggle" onclick="toggleExample(this)">Show Example</button>
+            <div class="example-content">
+              <p class="example-text">"A recent study of 2,000 students found that those who read for 20 minutes a day scored 30% higher on vocabulary tests than students who didn't."</p>
+              <p class="example-explanation">The writer uses a specific study, a large sample size (2,000 students), and a clear statistic (30% higher). These facts and numbers make the argument hard to argue with.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pathos -->
+        <div class="appeal-card" data-appeal="pathos">
+          <div class="card-header">
+            <div class="card-emoji">❤️</div>
+            <div class="card-title">Pathos</div>
+            <div class="card-subtitle">Emotion &amp; Feelings</div>
+          </div>
+          <div class="card-body">
+            <p><strong>Pathos</strong> is about emotion. When a writer uses pathos, they make you feel something — sad, happy, angry, or inspired — to persuade you. It answers the question: <em>How does this make me feel?</em></p>
+            <div class="analogy-box">
+              <div class="label">Kid-Friendly Analogy</div>
+              <p>You see a poster of a lonely puppy behind cage bars with the words "Give me a home." The sad image makes you want to help — that emotional pull is pathos.</p>
+            </div>
+            <p style="font-size: var(--text-sm); font-weight: 700; color: var(--color-text-muted); margin-bottom: var(--space-1);">Clue words to look for:</p>
+            <div class="clue-words">
+              <span class="clue-chip">heartbreaking</span>
+              <span class="clue-chip">imagine</span>
+              <span class="clue-chip">devastating</span>
+              <span class="clue-chip">heartwarming</span>
+              <span class="clue-chip">fear</span>
+              <span class="clue-chip">love</span>
+              <span class="clue-chip">tragic</span>
+            </div>
+            <button class="example-toggle" onclick="toggleExample(this)">Show Example</button>
+            <div class="example-content">
+              <p class="example-text">"Every night, thousands of children go to bed hungry, wondering if they'll eat tomorrow. You can change that with just one dollar a day."</p>
+              <p class="example-explanation">The writer paints a vivid, emotional picture of hungry children. The goal is to make you feel compassion — and that feeling motivates you to act.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Reference Table -->
+      <div class="quick-ref">
+        <h3>Quick Reference Guide</h3>
+        <table class="quick-ref-table">
+          <thead>
+            <tr>
+              <th>Appeal</th>
+              <th>Means</th>
+              <th>Asks</th>
+              <th>Uses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="ethos-row">
+              <td>Ethos</td>
+              <td>Credibility</td>
+              <td>Can I trust you?</td>
+              <td>Expertise, titles, experience</td>
+            </tr>
+            <tr class="logos-row">
+              <td>Logos</td>
+              <td>Logic</td>
+              <td>Does this make sense?</td>
+              <td>Facts, data, statistics</td>
+            </tr>
+            <tr class="pathos-row">
+              <td>Pathos</td>
+              <td>Emotion</td>
+              <td>How does this feel?</td>
+              <td>Stories, vivid words, images</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Teach Completion -->
+      <button class="teach-complete-btn" id="teach-complete-btn" onclick="markTeachComplete()">
+        ✓ I've Read Everything — Mark Teach Complete
+      </button>
+      <p class="teach-complete-hint" id="teach-complete-hint">Open all 3 examples above to unlock this button</p>
+      <div class="section-complete-banner" id="teach-complete-banner">
+        <span class="check-icon">✅</span>
+        <span class="banner-text">Teach section complete! Head to the Guide section next.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Guide Section ===== -->
+  <section class="section" id="guide-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Guided Practice</h2>
+        <p>Let's work through examples together. For each passage, answer the step-by-step questions. Use a hint anytime you're stuck.</p>
+      </div>
+
+      <div class="guide-progress" id="guide-progress"></div>
+
+      <div class="guide-card" id="guide-content"></div>
+    </div>
+  </section>
+
+  <!-- ===== Practice Section ===== -->
+  <section class="section" id="practice-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Quiz Challenge</h2>
+        <p>Read each passage and decide which rhetorical appeal is being used. Get instant feedback and explanations after every answer.</p>
+      </div>
+
+      <div class="practice-scorebar" id="practice-scorebar">
+        <div class="score-item">
+          <div class="score-label">Question</div>
+          <div class="score-value" id="question-counter">1 / 10</div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Score</div>
+          <div class="score-value correct" id="score-display">0</div>
+        </div>
+        <div class="score-item">
+          <div class="score-label">Streak</div>
+          <div class="score-value streak" id="streak-display">0</div>
+        </div>
+      </div>
+
+      <div class="quiz-card" id="quiz-card"></div>
+
+      <div class="quiz-results" id="quiz-results"></div>
+    </div>
+  </section>
+
+  <!-- ===== Certificate Modal ===== -->
+  <div class="certificate-overlay" id="certificate-overlay">
+    <div class="certificate" id="certificate">
+      <div class="certificate-inner-border">
+        <div class="certificate-seal">🎓</div>
+        <div class="certificate-title">Certificate of Completion</div>
+        <div class="certificate-subtitle">Rhetorical Appeals Mastery — Florida B.E.S.T. ELA.6.R.3.4</div>
+        <div class="certificate-name" id="cert-name">Student Name</div>
+        <div class="certificate-body">
+          has successfully completed all three sections of the Rhetorical Appeals learning module —
+          <strong>Teach</strong>, <strong>Guide</strong>, and <strong>Practice</strong> —
+          demonstrating the ability to identify and explain <strong>ethos</strong>, <strong>logos</strong>,
+          and <strong>pathos</strong> in persuasive texts.
+        </div>
+        <div class="certificate-stats">
+          <div class="cert-stat">
+            <div class="cert-stat-value" id="cert-guide-score">0/12</div>
+            <div class="cert-stat-label">Guide Score</div>
+          </div>
+          <div class="cert-stat">
+            <div class="cert-stat-value" id="cert-quiz-score">0/10</div>
+            <div class="cert-stat-label">Quiz Score</div>
+          </div>
+          <div class="cert-stat">
+            <div class="cert-stat-value" id="cert-quiz-percent">0%</div>
+            <div class="cert-stat-label">Quiz Accuracy</div>
+          </div>
+          <div class="cert-stat">
+            <div class="cert-stat-value" id="cert-best-streak">0</div>
+            <div class="cert-stat-label">Best Streak</div>
+          </div>
+        </div>
+        <div class="certificate-date" id="cert-date">Date</div>
+        <div class="certificate-signature">Rhetorical Appeals Learning Module</div>
+      </div>
+      <div class="certificate-actions">
+        <button class="cert-btn print" onclick="window.print()">🖨️ Print Certificate</button>
+        <button class="cert-btn close" onclick="closeCertificate()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    // ===== Theme Toggle =====
+    (function() {
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      updateThemeIcon();
+      toggle && toggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        updateThemeIcon();
+      });
+      function updateThemeIcon() {
+        toggle.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+        toggle.setAttribute('aria-label', 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode');
+      }
+    })();
+
+    // ===== Student Name & Progress Tracking =====
+    let studentName = '';
+    let sectionComplete = { intro: false, teach: false, guide: false, practice: false };
+    let examplesOpened = new Set();
+    let videoWatched = false;
+    let reflectionSubmitted = false;
+    let ytPlayer = null;
+    let ytProgressInterval = null;
+
+    // ===== YouTube IFrame API =====
+    window.onYouTubeIframeAPIReady = function() {
+      ytPlayer = new YT.Player('video-player', {
+        videoId: '1FqCkyO2Ir4',
+        playerVars: {
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    };
+
+    function onPlayerReady(event) {
+      // Player loaded
+    }
+
+    function showReflectionCard() {
+      document.getElementById('reflection-card').classList.add('show');
+      setTimeout(() => {
+        document.getElementById('reflection-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 300);
+    }
+
+    function onPlayerStateChange(event) {
+      const statusText = document.getElementById('video-status-text');
+      const watchBtn = document.getElementById('video-watch-btn');
+
+      if (event.data === YT.PlayerState.PLAYING) {
+        statusText.textContent = '▶️ Video is playing...';
+        if (!ytProgressInterval) {
+          ytProgressInterval = setInterval(updateVideoProgress, 1000);
+        }
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        statusText.textContent = '⏸️ Paused — resume watching to continue';
+      } else if (event.data === YT.PlayerState.ENDED) {
+        statusText.textContent = '✅ Video complete!';
+        statusText.classList.add('watched');
+        watchBtn.classList.add('ready');
+        watchBtn.textContent = '✓ Continue to Teach →';
+        clearInterval(ytProgressInterval);
+        ytProgressInterval = null;
+        videoWatched = true;
+        document.getElementById('video-progress-bar').style.width = '100%';
+        if (!reflectionSubmitted) showReflectionCard();
+      }
+    }
+
+    function updateVideoProgress() {
+      if (!ytPlayer || !ytPlayer.getCurrentTime || !ytPlayer.getDuration) return;
+      try {
+        const current = ytPlayer.getCurrentTime();
+        const duration = ytPlayer.getDuration();
+        if (duration > 0) {
+          const percent = Math.min(100, (current / duration) * 100);
+          document.getElementById('video-progress-bar').style.width = percent + '%';
+
+          // Auto-enable the button at 90% (in case ENDED doesn't fire)
+          if (percent >= 90 && !videoWatched) {
+            const statusText = document.getElementById('video-status-text');
+            const watchBtn = document.getElementById('video-watch-btn');
+            statusText.textContent = '✅ Almost done! You can continue now.';
+            statusText.classList.add('watched');
+            watchBtn.classList.add('ready');
+            watchBtn.textContent = '✓ Continue to Teach →';
+            videoWatched = true;
+            if (!reflectionSubmitted) showReflectionCard();
+          }
+        }
+      } catch(e) {
+        // Player not ready yet
+      }
+    }
+
+    function submitReflection() {
+      const text = document.getElementById('reflection-text').value.trim();
+      const hint = document.getElementById('reflection-hint');
+      const confirmation = document.getElementById('reflection-confirmation');
+      const watchBtn = document.getElementById('video-watch-btn');
+
+      if (text.length < 20) {
+        hint.textContent = 'Please write at least 20 characters. You have ' + text.length + ' so far.';
+        hint.style.color = 'var(--color-incorrect)';
+        document.getElementById('reflection-text').focus();
+        return;
+      }
+
+      reflectionSubmitted = true;
+      hint.style.display = 'none';
+      confirmation.classList.add('show');
+      document.getElementById('reflection-text').disabled = true;
+      document.querySelector('.reflection-submit').style.display = 'none';
+      watchBtn.textContent = '✓ Continue to Teach →';
+    }
+
+    function markIntroComplete() {
+      if (!videoWatched || !reflectionSubmitted) return;
+      sectionComplete.intro = true;
+      document.getElementById('video-watch-btn').classList.add('complete');
+      document.getElementById('video-watch-btn').textContent = '✅ Intro Complete';
+      document.getElementById('video-status-text').textContent = '✅ Video and reflection complete! Head to Teach next.';
+      document.getElementById('intro-complete-banner').classList.add('show');
+      updateProgressTracker();
+    }
+
+    function manualConfirmVideo() {
+      // For classroom use where video was shown on a projector
+      videoWatched = true;
+      const statusText = document.getElementById('video-status-text');
+      const watchBtn = document.getElementById('video-watch-btn');
+      statusText.textContent = '✅ Marked as watched in class';
+      statusText.classList.add('watched');
+      watchBtn.classList.add('ready');
+      watchBtn.textContent = '✓ Continue to Teach →';
+      document.getElementById('video-progress-bar').style.width = '100%';
+      if (!reflectionSubmitted) showReflectionCard();
+    }
+
+    function saveStudentName() {
+      const input = document.getElementById('student-name');
+      const name = input.value.trim();
+      if (!name) {
+        input.focus();
+        input.style.borderColor = 'var(--color-incorrect)';
+        setTimeout(() => { input.style.borderColor = ''; }, 1500);
+        return;
+      }
+      studentName = name;
+      document.getElementById('name-input-section').style.display = 'none';
+      const display = document.getElementById('name-display');
+      document.getElementById('name-display-text').textContent = name;
+      display.classList.add('show');
+    }
+
+    function editStudentName() {
+      document.getElementById('name-display').classList.remove('show');
+      const section = document.getElementById('name-input-section');
+      section.style.display = 'flex';
+      const input = document.getElementById('student-name');
+      input.value = studentName;
+      input.focus();
+    }
+
+    // Enter key support for name input
+    document.getElementById('student-name').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') saveStudentName();
+    });
+
+    function updateProgressTracker() {
+      const sections = ['intro', 'teach', 'guide', 'practice'];
+      const completed = sections.filter(s => sectionComplete[s]).length;
+      const percent = Math.round((completed / sections.length) * 100);
+      document.getElementById('tracker-percent').textContent = percent + '% Complete';
+
+      // Update tracker steps
+      sections.forEach(section => {
+        const el = document.getElementById('tracker-' + section);
+        if (sectionComplete[section]) {
+          el.classList.add('completed');
+          el.classList.remove('active');
+          el.querySelector('.tracker-check').textContent = '✓';
+        }
+      });
+
+      // If all complete, show certificate
+      if (completed === sections.length) {
+        setTimeout(() => showCertificate(), 800);
+      }
+    }
+
+    function setTrackerActive(section) {
+      ['intro', 'teach', 'guide', 'practice'].forEach(s => {
+        const el = document.getElementById('tracker-' + s);
+        if (!sectionComplete[s]) {
+          el.classList.toggle('active', s === section);
+        }
+      });
+    }
+
+    // ===== Teach: Example Toggle + Completion =====
+    function toggleExample(btn) {
+      const content = btn.nextElementSibling;
+      const isShown = content.classList.contains('show');
+      content.classList.toggle('show');
+      btn.textContent = isShown ? 'Show Example' : 'Hide Example';
+
+      // Track which examples have been opened
+      if (!isShown) {
+        const card = btn.closest('.appeal-card');
+        const appeal = card.dataset.appeal;
+        examplesOpened.add(appeal);
+
+        // Check if all 3 examples have been opened
+        if (examplesOpened.size >= 3) {
+          const btn2 = document.getElementById('teach-complete-btn');
+          btn2.classList.add('ready');
+          document.getElementById('teach-complete-hint').textContent = 'Ready! Click the button above to mark this section complete.';
+        }
+      }
+    }
+
+    function markTeachComplete() {
+      if (examplesOpened.size < 3) return;
+      sectionComplete.teach = true;
+      document.getElementById('teach-complete-btn').style.display = 'none';
+      document.getElementById('teach-complete-hint').style.display = 'none';
+      document.getElementById('teach-complete-banner').classList.add('show');
+      updateProgressTracker();
+    }
+
+    // ===== Certificate =====
+    function showCertificate() {
+      // Populate certificate
+      document.getElementById('cert-name').textContent = studentName || 'Student';
+      document.getElementById('cert-quiz-score').textContent = quizScore + '/' + quizQuestions.length;
+      document.getElementById('cert-quiz-percent').textContent = Math.round((quizScore / quizQuestions.length) * 100) + '%';
+      document.getElementById('cert-guide-score').textContent = guideCorrect + '/' + guideTotal;
+      document.getElementById('cert-best-streak').textContent = maxStreak;
+
+      const today = new Date();
+      const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('cert-date').textContent = dateStr;
+
+      document.getElementById('certificate-overlay').classList.add('show');
+    }
+
+    function closeCertificate() {
+      document.getElementById('certificate-overlay').classList.remove('show');
+    }
+
+    // ===== Tab Navigation =====
+    const tabs = document.querySelectorAll('.nav-tab, .hero-nav-btn, .tracker-step');
+    const sections = document.querySelectorAll('.section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        // Update nav tabs
+        document.querySelectorAll('.nav-tab').forEach(t => {
+          t.classList.toggle('active', t.dataset.tab === target);
+        });
+        // Show/hide sections
+        sections.forEach(s => {
+          s.classList.toggle('active', s.id === target + '-section');
+        });
+        // Update progress tracker
+        setTrackerActive(target);
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    // ===== Guide Section Data =====
+    const guideItems = [
+      {
+        passage: "Dr. Maria Santos has spent 20 years studying sleep patterns in teenagers. In her new book, she explains that middle school students need 9 to 11 hours of sleep each night for their brains to develop properly.",
+        source: "From a health magazine article",
+        steps: [
+          {
+            label: "Step 1",
+            question: "Who is the speaker, and why should we trust them?",
+            choices: [
+              "A random blogger with no credentials",
+              "Dr. Maria Santos, who has 20 years of experience studying sleep",
+              "A teenager who likes to sleep",
+              "A book reviewer"
+            ],
+            correct: 1,
+            hint: "Look for the person's name, job title, and how long they've been doing this work.",
+            feedback: "Dr. Maria Santos is identified as an expert who has studied sleep for 20 years. Her title (Dr.), her profession (researcher), and her experience (20 years) all build trust — that's ethos."
+          },
+          {
+            label: "Step 2",
+            question: "What clue in the passage signals trustworthiness?",
+            choices: [
+              "The word 'book'",
+              "'20 years studying sleep patterns'",
+              "The number 9 to 11",
+              "The word 'teenagers'"
+            ],
+            correct: 1,
+            hint: "Which detail tells us the speaker has spent a long time becoming an expert?",
+            feedback: "'20 years studying sleep patterns' is the key detail. It shows the speaker has deep experience, which is a hallmark of ethos."
+          },
+          {
+            label: "Step 3",
+            question: "Which rhetorical appeal is strongest in this passage?",
+            choices: ["Logos — it uses statistics", "Pathos — it appeals to emotion", "Ethos — it builds trust and credibility", "None — it's just information"],
+            correct: 2,
+            hint: "Think about what the passage emphasizes: expertise, data, or feelings?",
+            feedback: "The passage is primarily ethos. While it does mention numbers (9-11 hours), the main focus is on establishing Dr. Santos as a credible expert through her years of study."
+          }
+        ]
+      },
+      {
+        passage: "The school cafeteria throws away nearly 200 pounds of food every single week. That's the weight of a full-grown adult gorilla! By starting a composting program, we could cut that waste in half and help the environment at the same time.",
+        source: "From a student council proposal",
+        steps: [
+          {
+            label: "Step 1",
+            question: "What kind of evidence does the writer use?",
+            choices: [
+              "A personal story about feelings",
+              "A specific number: 200 pounds of food waste per week",
+              "An expert's opinion",
+              "A joke"
+            ],
+            correct: 1,
+            hint: "Look for numbers, measurements, or data in the passage.",
+            feedback: "The writer uses a specific measurement — 200 pounds of food waste per week. This is factual data that supports the argument."
+          },
+          {
+            label: "Step 2",
+            question: "How does the comparison to a gorilla help the argument?",
+            choices: [
+              "It makes you laugh",
+              "It helps you picture the scale of the waste using logic and comparison",
+              "It's about animal rights",
+              "It doesn't help"
+            ],
+            correct: 1,
+            hint: "The comparison helps you understand how big 200 pounds really is.",
+            feedback: "Comparing 200 pounds to a gorilla helps the reader understand the scale of the problem. This logical comparison makes the evidence more powerful."
+          },
+          {
+            label: "Step 3",
+            question: "Which rhetorical appeal is strongest in this passage?",
+            choices: ["Ethos — it builds trust", "Logos — it uses facts and data", "Pathos — it appeals to emotion", "None of the above"],
+            correct: 1,
+            hint: "What is the writer relying on most: their credibility, facts/numbers, or feelings?",
+            feedback: "This passage is primarily logos. The writer uses a specific statistic (200 pounds) and logical reasoning (composting would cut waste in half) to make a strong, evidence-based argument."
+          }
+        ]
+      },
+      {
+        passage: "Picture a child sitting alone in a cold, empty room with no books, no toys, and no one to talk to. Now imagine being that child. For thousands of kids in our community, this is real. Your donation of just one book can bring warmth, hope, and a smile to a child who has nothing.",
+        source: "From a charity brochure",
+        steps: [
+          {
+            label: "Step 1",
+            question: "What is the writer trying to make you feel?",
+            choices: [
+              "Bored",
+              "Compassion and sympathy for lonely children",
+              "Angry at the writer",
+              "Confused"
+            ],
+            correct: 1,
+            hint: "Notice the emotional words: 'cold,' 'empty,' 'alone,' 'nothing.'",
+            feedback: "The writer uses words like 'cold,' 'empty,' 'alone,' and 'nothing' to make you feel sympathy and compassion for children in need."
+          },
+          {
+            label: "Step 2",
+            question: "Which technique does the writer use to create emotion?",
+            choices: [
+              "Citing a research study",
+              "Listing credentials",
+              "Asking you to imagine being the child — 'imagine being that child'",
+              "Showing a graph"
+            ],
+            correct: 2,
+            hint: "The writer puts you in the child's shoes. Which choice describes that?",
+            feedback: "The phrase 'imagine being that child' is a direct appeal to your emotions. The writer wants you to feel what that child feels."
+          },
+          {
+            label: "Step 3",
+            question: "Which rhetorical appeal is strongest in this passage?",
+            choices: ["Ethos — credibility", "Logos — logic and data", "Pathos — emotion and feelings", "None — it's just a story"],
+            correct: 2,
+            hint: "Is the writer using facts, trust, or feelings to persuade you?",
+            feedback: "This passage is primarily pathos. The writer uses vivid, emotional language and asks you to imagine a heartbreaking scene. The goal is to make you feel compassion so you'll donate."
+          }
+        ]
+      },
+      {
+        passage: "As a three-time state chess champion and certified chess instructor, I can tell you that learning chess improves critical thinking skills. Studies from Harvard University show that students who play chess regularly score 15% higher on problem-solving assessments.",
+        source: "From an after-school program flyer",
+        steps: [
+          {
+            label: "Step 1",
+            question: "This passage uses MORE than one appeal. Which two do you notice?",
+            choices: [
+              "Ethos and Pathos",
+              "Ethos and Logos",
+              "Logos and Pathos",
+              "Only one appeal"
+            ],
+            correct: 1,
+            hint: "Look for expertise/credentials AND for facts/data in the same passage.",
+            feedback: "The passage uses both ethos (the speaker's credentials as a champion and instructor) and logos (the Harvard study and 15% statistic)."
+          },
+          {
+            label: "Step 2",
+            question: "Which part builds ethos (credibility)?",
+            choices: [
+              "'three-time state chess champion and certified chess instructor'",
+              "'15% higher on problem-solving assessments'",
+              "'learning chess improves critical thinking'",
+              "'Studies from Harvard University'"
+            ],
+            correct: 0,
+            hint: "Which part tells us the speaker is qualified and trustworthy?",
+            feedback: "Being a 'three-time state chess champion and certified chess instructor' establishes the speaker's expertise — that's ethos."
+          },
+          {
+            label: "Step 3",
+            question: "Which part uses logos (logic)?",
+            choices: [
+              "'three-time state chess champion'",
+              "'Studies from Harvard University show that students who play chess regularly score 15% higher'",
+              "'I can tell you'",
+              "'certified chess instructor'"
+            ],
+            correct: 1,
+            hint: "Which part uses research, a study, or a statistic?",
+            feedback: "The Harvard study and the 15% statistic are logos — they provide factual evidence to back up the claim. Real-world arguments often combine multiple appeals!"
+          }
+        ]
+      }
+    ];
+
+    // ===== Guide State =====
+    let guideIndex = 0;
+    let guideStepIndex = 0;
+    let guideStepCompleted = false;
+    let guideCorrect = 0;
+    const guideTotal = 12; // 4 passages × 3 steps each
+
+    function renderGuideProgress() {
+      const container = document.getElementById('guide-progress');
+      container.innerHTML = '';
+      guideItems.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        if (i < guideIndex) dot.classList.add('completed');
+        else if (i === guideIndex) dot.classList.add('current');
+        dot.textContent = i + 1;
+        container.appendChild(dot);
+      });
+    }
+
+    function renderGuide() {
+      const item = guideItems[guideIndex];
+      const content = document.getElementById('guide-content');
+      const step = item.steps[guideStepIndex];
+
+      let html = `
+        <div class="guide-passage">
+          ${item.passage}
+          <span class="source">${item.source}</span>
+        </div>
+        <div class="guide-step">
+          <div class="guide-step-label">${step.label} of ${item.steps.length}</div>
+          <div class="guide-question">${step.question}</div>
+          <div class="guide-choices">
+      `;
+
+      step.choices.forEach((choice, i) => {
+        const letter = String.fromCharCode(65 + i);
+        html += `
+          <button class="choice-btn" onclick="checkGuideAnswer(${i})" data-index="${i}">
+            <span class="choice-letter">${letter}</span>
+            <span>${choice}</span>
+          </button>
+        `;
+      });
+
+      html += `
+          </div>
+          <button class="hint-btn" onclick="toggleHint(this)">
+            💡 Hint
+          </button>
+          <div class="hint-text">${step.hint}</div>
+          <div class="step-feedback" id="step-feedback"></div>
+        </div>
+      `;
+
+      // Navigation
+      html += '<div class="guide-nav">';
+      if (guideIndex > 0 || guideStepIndex > 0) {
+        html += '<button class="guide-nav-btn" onclick="prevGuideStep()">← Back</button>';
+      }
+      html += `<button class="guide-nav-btn primary" id="next-step-btn" onclick="nextGuideStep()" disabled>Next →</button>`;
+      html += '</div>';
+
+      content.innerHTML = html;
+      guideStepCompleted = false;
+      renderGuideProgress();
+    }
+
+    function checkGuideAnswer(index) {
+      const item = guideItems[guideIndex];
+      const step = item.steps[guideStepIndex];
+      const buttons = document.querySelectorAll('.choice-btn');
+      const feedback = document.getElementById('step-feedback');
+      const nextBtn = document.getElementById('next-step-btn');
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        const btnIndex = parseInt(btn.dataset.index);
+        if (btnIndex === step.correct) {
+          btn.classList.add('correct');
+        } else if (btnIndex === index) {
+          btn.classList.add('incorrect');
+        }
+      });
+
+      const isCorrect = index === step.correct;
+      if (isCorrect) guideCorrect++;
+      feedback.className = 'step-feedback show ' + (isCorrect ? 'correct' : 'incorrect');
+      const prefix = isCorrect ? '✓ ' : '✗ Not quite — ';
+      feedback.innerHTML = prefix + step.feedback;
+      nextBtn.disabled = false;
+      guideStepCompleted = true;
+    }
+
+    function toggleHint(btn) {
+      const hint = btn.nextElementSibling;
+      const isShown = hint.classList.contains('show');
+      hint.classList.toggle('show');
+      btn.innerHTML = isShown ? '💡 Hint' : '💡 Hide Hint';
+    }
+
+    function nextGuideStep() {
+      if (!guideStepCompleted) return;
+      const item = guideItems[guideIndex];
+
+      if (guideStepIndex < item.steps.length - 1) {
+        guideStepIndex++;
+        renderGuide();
+      } else if (guideIndex < guideItems.length - 1) {
+        guideIndex++;
+        guideStepIndex = 0;
+        renderGuide();
+      } else {
+        // All done
+        renderGuideComplete();
+      }
+    }
+
+    function prevGuideStep() {
+      if (guideStepIndex > 0) {
+        guideStepIndex--;
+      } else if (guideIndex > 0) {
+        guideIndex--;
+        guideStepIndex = guideItems[guideIndex].steps.length - 1;
+      }
+      renderGuide();
+    }
+
+    function renderGuideComplete() {
+      const content = document.getElementById('guide-content');
+      const guidePercent = Math.round((guideCorrect / guideTotal) * 100);
+      const guidePassed = guidePercent >= 80;
+
+      if (guidePassed) {
+        content.innerHTML = `
+          <div class="guide-complete">
+            <div class="guide-complete-icon">🎉</div>
+            <h3>You've completed all guided examples!</h3>
+            <p>You scored <strong>${guideCorrect}/${guideTotal}</strong> (${guidePercent}%) on the guided practice. You practiced identifying ethos, logos, and pathos across four different passages — including one that combined multiple appeals. Ready to test yourself?</p>
+            <button class="restart-btn" onclick="goToPractice()">Start the Quiz →</button>
+          </div>
+        `;
+        renderGuideProgress();
+        document.querySelectorAll('.progress-dot').forEach(d => d.classList.add('completed'));
+        // Mark guide section as complete
+        if (!sectionComplete.guide) {
+          sectionComplete.guide = true;
+          updateProgressTracker();
+        }
+      } else {
+        content.innerHTML = `
+          <div class="guide-complete">
+            <div class="guide-complete-icon">📝</div>
+            <h3>Almost there!</h3>
+            <p>You scored <strong>${guideCorrect}/${guideTotal}</strong> (${guidePercent}%) on the guided practice. You need <strong>80%</strong> or higher to unlock your certificate. Review the examples and try again!</p>
+            <p style="font-size:var(--text-sm);color:var(--color-text-muted);font-weight:600;margin-top:var(--space-2);">🔒 Score 80% or higher to complete this section.</p>
+            <button class="restart-btn" onclick="restartGuide()">🔄 Try Again</button>
+          </div>
+        `;
+        renderGuideProgress();
+        document.querySelectorAll('.progress-dot').forEach(d => d.classList.add('completed'));
+      }
+    }
+
+    function restartGuide() {
+      guideIndex = 0;
+      guideStepIndex = 0;
+      guideCorrect = 0;
+      guideStepCompleted = false;
+      renderGuide();
+    }
+
+    function goToPractice() {
+      document.querySelectorAll('.nav-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === 'practice');
+      });
+      sections.forEach(s => {
+        s.classList.toggle('active', s.id === 'practice-section');
+      });
+      setTrackerActive('practice');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ===== Quiz Data =====
+    const quizQuestions = [
+      {
+        passage: "According to the American Dental Association, brushing twice a day reduces cavities by 60%. The ADA has studied dental health for over 150 years.",
+        question: "Which rhetorical appeal is strongest here?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 0,
+        appeal: "ethos",
+        explanation: "The passage cites the American Dental Association, a trusted organization with 150+ years of experience. The focus is on establishing credibility and trust — that's ethos. The 60% statistic adds some logos, but the primary strategy is credibility."
+      },
+      {
+        passage: "A study of 5,000 students found that those who ate breakfast scored an average of 12 points higher on math tests compared to students who skipped breakfast.",
+        question: "Which rhetorical appeal is being used?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 1,
+        appeal: "logos",
+        explanation: "The writer relies on a specific study, a large sample size (5,000 students), and a clear statistic (12 points higher). This factual, data-driven approach is logos."
+      },
+      {
+        passage: "Every morning, little Maya walks three miles to school with holes in her shoes. She dreams of becoming a doctor. With your help, she can have the books and supplies she needs to reach that dream.",
+        question: "Which rhetorical appeal is strongest here?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 2,
+        appeal: "pathos",
+        explanation: "The writer tells an emotional story about a specific child, using vivid details (holes in shoes, walking three miles, dreaming of becoming a doctor) to create sympathy. This appeal to feelings is pathos."
+      },
+      {
+        passage: "I've coached the school debate team for 12 years and led them to four state championships. Trust me when I say that every student who joins gains confidence and critical thinking skills.",
+        question: "Which rhetorical appeal is being used?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 0,
+        appeal: "ethos",
+        explanation: "The speaker establishes their credibility by mentioning 12 years of coaching experience and four state championships. The phrase 'Trust me' is a direct appeal to ethos — the audience should believe them because of their qualifications."
+      },
+      {
+        passage: "Recycling one aluminum can saves enough energy to power a TV for three hours. If every student at our school recycled just one can per day, we'd save enough energy to power 50 homes for a full year.",
+        question: "Which rhetorical appeal is strongest here?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 1,
+        appeal: "logos",
+        explanation: "The writer uses specific facts (one can powers a TV for three hours) and logical calculations (enough energy for 50 homes). This fact-based, mathematical reasoning is logos."
+      },
+      {
+        passage: "When you adopt a shelter pet, you're not just getting a companion. You're saving a life. That wagging tail, those grateful eyes — there's no feeling quite like knowing you gave an animal a second chance.",
+        question: "Which rhetorical appeal is being used?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 2,
+        appeal: "pathos",
+        explanation: "The writer appeals to emotion with phrases like 'saving a life,' 'wagging tail,' 'grateful eyes,' and 'second chance.' The goal is to make you feel warm and compassionate — that's pathos."
+      },
+      {
+        passage: "The Centers for Disease Control reports that only 1 in 4 teenagers get the recommended amount of physical activity. Dr. James Lee, a pediatric health researcher at Johns Hopkins, warns that this trend could lead to serious health problems.",
+        question: "Which TWO appeals are used in this passage?",
+        choices: [
+          { text: "Ethos only", icon: "🤝" },
+          { text: "Logos only", icon: "📊" },
+          { text: "Ethos and Logos", icon: "🤝📊" },
+          { text: "Pathos only", icon: "❤️" }
+        ],
+        correct: 2,
+        appeal: "mixed",
+        explanation: "This passage combines both ethos and logos. Ethos: the CDC and Dr. James Lee at Johns Hopkins are credible sources that build trust. Logos: the statistic '1 in 4 teenagers' provides factual data. Real-world writing often mixes appeals!"
+      },
+      {
+        passage: "Imagine standing at the edge of the Grand Canyon for the first time — the vastness, the colors, the silence that takes your breath away. That's what protecting our national parks means. Don't let these places disappear.",
+        question: "Which rhetorical appeal is strongest here?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 2,
+        appeal: "pathos",
+        explanation: "The writer asks you to imagine a powerful emotional experience and uses sensory language ('vastness,' 'colors,' 'silence,' 'takes your breath away'). The goal is to make you feel awe and a desire to protect these places — that's pathos."
+      },
+      {
+        passage: "Our school library has only 4,200 books for 800 students — that's about 5 books per student. The national average is 15 books per student. We are below the standard, and something needs to change.",
+        question: "Which rhetorical appeal is being used?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 1,
+        appeal: "logos",
+        explanation: "The writer uses specific numbers (4,200 books, 800 students, 5 books per student) and compares them to a standard (the national average of 15). This data-driven, logical comparison is logos."
+      },
+      {
+        passage: "As your class president for the past two years, I've listened to every one of your concerns. I've successfully organized three school events and raised $2,000 for new sports equipment. I ask for your vote once more.",
+        question: "Which rhetorical appeal is strongest here?",
+        choices: [
+          { text: "Ethos", icon: "🤝" },
+          { text: "Logos", icon: "📊" },
+          { text: "Pathos", icon: "❤️" }
+        ],
+        correct: 0,
+        appeal: "ethos",
+        explanation: "The speaker builds credibility by mentioning their role (class president for two years), their actions (organized events, raised money), and their responsiveness to student concerns. This focus on trustworthiness and track record is ethos."
+      }
+    ];
+
+    // ===== Quiz State =====
+    let quizIndex = 0;
+    let quizScore = 0;
+    let quizStreak = 0;
+    let maxStreak = 0;
+    let quizAnswered = false;
+    let appealCounts = { ethos: 0, logos: 0, pathos: 0, mixed: 0 };
+    let appealCorrect = { ethos: 0, logos: 0, pathos: 0, mixed: 0 };
+
+    function renderQuiz() {
+      const card = document.getElementById('quiz-card');
+      const results = document.getElementById('quiz-results');
+      results.classList.remove('show');
+      card.style.display = 'block';
+
+      if (quizIndex >= quizQuestions.length) {
+        renderQuizResults();
+        return;
+      }
+
+      const q = quizQuestions[quizIndex];
+      quizAnswered = false;
+
+      // Update scorebar
+      document.getElementById('question-counter').textContent = `${quizIndex + 1} / ${quizQuestions.length}`;
+      document.getElementById('score-display').textContent = quizScore;
+      document.getElementById('streak-display').textContent = quizStreak;
+      document.getElementById('progress-bar').style.width = `${(quizIndex / quizQuestions.length) * 100}%`;
+
+      let html = `
+        <div class="quiz-number">Question ${quizIndex + 1} of ${quizQuestions.length}</div>
+        <div class="quiz-passage">${q.passage}</div>
+        <div class="quiz-question">${q.question}</div>
+        <div class="quiz-choices">
+      `;
+
+      q.choices.forEach((choice, i) => {
+        html += `
+          <button class="quiz-choice" onclick="checkQuizAnswer(${i})" data-index="${i}">
+            <span class="choice-icon">${choice.icon}</span>
+            <span>${choice.text}</span>
+          </button>
+        `;
+      });
+
+      html += `
+        </div>
+        <div class="quiz-explanation" id="quiz-explanation">
+          <div class="explanation-label">Explanation</div>
+          <p>${q.explanation}</p>
+          <span class="appeal-tag ${q.appeal}">Correct answer: ${q.choices[q.correct].text}</span>
+        </div>
+        <button class="quiz-next" id="quiz-next" onclick="nextQuizQuestion()" style="display:none;">
+          ${quizIndex < quizQuestions.length - 1 ? 'Next Question →' : 'See Results →'}
+        </button>
+      `;
+
+      card.innerHTML = html;
+    }
+
+    function checkQuizAnswer(index) {
+      if (quizAnswered) return;
+      quizAnswered = true;
+
+      const q = quizQuestions[quizIndex];
+      const buttons = document.querySelectorAll('.quiz-choice');
+      const explanation = document.getElementById('quiz-explanation');
+      const nextBtn = document.getElementById('quiz-next');
+
+      buttons.forEach(btn => {
+        btn.disabled = true;
+        const btnIndex = parseInt(btn.dataset.index);
+        if (btnIndex === q.correct) {
+          btn.classList.add('correct');
+        } else if (btnIndex === index) {
+          btn.classList.add('incorrect');
+        }
+      });
+
+      const isCorrect = index === q.correct;
+      appealCounts[q.appeal]++;
+
+      if (isCorrect) {
+        quizScore++;
+        quizStreak++;
+        maxStreak = Math.max(maxStreak, quizStreak);
+        appealCorrect[q.appeal]++;
+      } else {
+        quizStreak = 0;
+      }
+
+      // Update scorebar
+      document.getElementById('score-display').textContent = quizScore;
+      document.getElementById('streak-display').textContent = quizStreak;
+      document.getElementById('progress-bar').style.width = `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+
+      explanation.classList.add('show');
+      nextBtn.style.display = 'block';
+
+      // Scroll to explanation
+      setTimeout(() => {
+        explanation.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    function nextQuizQuestion() {
+      quizIndex++;
+      renderQuiz();
+    }
+
+    function renderQuizResults() {
+      const card = document.getElementById('quiz-card');
+      card.style.display = 'none';
+      const results = document.getElementById('quiz-results');
+
+      const percentage = Math.round((quizScore / quizQuestions.length) * 100);
+      let emoji, message;
+
+      const passed = percentage >= 80;
+
+      if (percentage >= 90) {
+        emoji = "🏆";
+        message = "Outstanding! You've mastered rhetorical appeals. You can identify ethos, logos, and pathos like a pro!";
+      } else if (percentage >= 80) {
+        emoji = "🎉";
+        message = "Great job! You scored 80% or higher and unlocked your certificate of completion!";
+      } else if (percentage >= 50) {
+        emoji = "💪";
+        message = "Good effort! You need a score of 80% or higher to unlock your certificate. Review the ones you missed and try again!";
+      } else {
+        emoji = "📚";
+        message = "Keep practicing! You need a score of 80% or higher to unlock your certificate. Revisit the Teach and Guide sections to strengthen your skills, then come back and try again.";
+      }
+
+      let breakdownHTML = '';
+      ['ethos', 'logos', 'pathos', 'mixed'].forEach(appeal => {
+        const total = appealCounts[appeal];
+        const correct = appealCorrect[appeal];
+        if (total > 0) {
+          breakdownHTML += `
+            <div class="breakdown-item ${appeal}">
+              <div class="bd-label">${appeal}</div>
+              <div class="bd-value">${correct}/${total}</div>
+            </div>
+          `;
+        }
+      });
+
+      results.innerHTML = `
+        <div class="results-emoji">${emoji}</div>
+        <div class="results-score"><span class="num">${quizScore}</span> / ${quizQuestions.length}</div>
+        <p class="results-message">${message}</p>
+        <div class="results-breakdown">${breakdownHTML}</div>
+        <button class="restart-btn" onclick="restartQuiz()">🔄 Play Again</button>
+        ${passed && sectionComplete.teach && sectionComplete.guide ? '<button class="cert-btn print" style="margin-top:1rem;" onclick="showCertificate()">🎓 Get Your Certificate</button>' : ''}
+        ${!passed ? '<p style="margin-top:1rem;font-size:var(--text-sm);color:var(--color-text-muted);font-weight:600;">🔒 Score 80% or higher to unlock your certificate.</p>' : ''}
+      `;
+      results.classList.add('show');
+      document.getElementById('progress-bar').style.width = '100%';
+      // Mark practice section as complete only if score is 80% or higher
+      if (passed && !sectionComplete.practice) {
+        sectionComplete.practice = true;
+        updateProgressTracker();
+      }
+    }
+
+    function restartQuiz() {
+      quizIndex = 0;
+      quizScore = 0;
+      quizStreak = 0;
+      maxStreak = 0;
+      quizAnswered = false;
+      appealCounts = { ethos: 0, logos: 0, pathos: 0, mixed: 0 };
+      appealCorrect = { ethos: 0, logos: 0, pathos: 0, mixed: 0 };
+      renderQuiz();
+    }
+
+    // ===== Initialize =====
+    renderGuide();
+    renderQuiz();
+  </script>
+</body>
+</html>
